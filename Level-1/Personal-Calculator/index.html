@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Square Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .calc-btn:active {
+            transform: translateY(2px);
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="bg-slate-800 p-6 rounded-none border border-slate-700 shadow-[20px_20px_60px_#020617,-5px_-5px_30px_#1e293b]">
+        <div class="mb-6">
+            <input type="text" id="result" readonly 
+                class="w-full bg-slate-900 border-none text-right p-4 text-3xl btn-font text-emerald-400 placeholder-slate-700 shadow-inner focus:outline-none" 
+                placeholder="0">
+        </div>
+
+        <div class="grid grid-cols-4 gap-3">
+            <button onclick="clearDisplay()" class="calc-btn btn-font bg-rose-500/10 text-rose-500 p-4 font-bold shadow-[4px_4px_0px_#be123c] hover:bg-rose-500 hover:text-white transition-all">C</button>
+            <button onclick="deleteLast()" class="calc-btn btn-font bg-slate-700 text-slate-300 p-4 shadow-[4px_4px_0px_#1e293b] hover:bg-slate-600">⌫</button>
+            <button onclick="appendToDisplay('/')" class="calc-btn btn-font bg-slate-700 text-amber-500 p-4 shadow-[4px_4px_0px_#1e293b] hover:bg-slate-600">/</button>
+            <button onclick="appendToDisplay('*')" class="calc-btn btn-font bg-slate-700 text-amber-500 p-4 shadow-[4px_4px_0px_#1e293b] hover:bg-slate-600">×</button>
+            
+            <button onclick="appendToDisplay('7')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">7</button>
+            <button onclick="appendToDisplay('8')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">8</button>
+            <button onclick="appendToDisplay('9')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">9</button>
+            <button onclick="appendToDisplay('-')" class="calc-btn btn-font bg-slate-700 text-amber-500 p-4 shadow-[4px_4px_0px_#1e293b] hover:bg-slate-600">-</button>
+            
+            <button onclick="appendToDisplay('4')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">4</button>
+            <button onclick="appendToDisplay('5')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">5</button>
+            <button onclick="appendToDisplay('6')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">6</button>
+            <button onclick="appendToDisplay('+')" class="calc-btn btn-font bg-slate-700 text-amber-500 p-4 shadow-[4px_4px_0px_#1e293b] hover:bg-slate-600">+</button>
+            
+            <div class="col-span-3 grid grid-cols-3 gap-3">
+                <button onclick="appendToDisplay('1')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">1</button>
+                <button onclick="appendToDisplay('2')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">2</button>
+                <button onclick="appendToDisplay('3')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">3</button>
+                <button onclick="appendToDisplay('0')" class="col-span-2 calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">0</button>
+                <button onclick="appendToDisplay('.')" class="calc-btn btn-font bg-slate-800 text-white p-4 shadow-[4px_4px_0px_#0f172a] hover:bg-slate-700">.</button>
+            </div>
+            
+            <button onclick="calculate()" class="calc-btn btn-font bg-emerald-500 text-slate-900 font-bold p-4 shadow-[4px_4px_0px_#065f46] hover:bg-emerald-400 transition-colors">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('result');
+
+        function appendToDisplay(input) {
+            display.value += input;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Error";
+                setTimeout(clearDisplay, 1500);
+            }
+        }
+    </script>
+<script src="script.js"></script>
+</body>
+</html>

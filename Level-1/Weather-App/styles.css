@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+.weather-app {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    width: 400px;
+    text-align: center;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#cityInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#cityInput:focus {
+    border-color: #74b9ff;
+}
+
+#searchBtn {
+    padding: 12px 20px;
+    background: #74b9ff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+#searchBtn:hover {
+    background: #0984e3;
+}
+
+.weather-info {
+    display: none;
+}
+
+.weather-info.show {
+    display: block;
+}
+
+.city-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.temperature {
+    font-size: 48px;
+    font-weight: bold;
+    color: #74b9ff;
+    margin: 20px 0;
+}
+
+.description {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.weather-icon {
+    font-size: 60px;
+    margin: 20px 0;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.detail-item span:first-child {
+    color: #666;
+    font-weight: 500;
+}
+
+.detail-item span:last-child {
+    color: #333;
+    font-weight: bold;
+}
+
+.error-message {
+    display: none;
+    color: #e74c3c;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #ffeaea;
+    border-radius: 10px;
+    border: 1px solid #e74c3c;
+}
+
+.error-message.show {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .weather-app {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    .temperature {
+        font-size: 36px;
+    }
+    
+    .city-name {
+        font-size: 24px;
+    }
+}
